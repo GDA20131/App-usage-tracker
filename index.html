@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App Usage Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Productivity</p>
+          <h1>App Usage Tracker</h1>
+        </div>
+        <button id="resetBtn" class="secondary" type="button">Reset data</button>
+      </header>
+
+      <main>
+        <section class="stats-grid" aria-label="Usage summary">
+          <article class="stat-card accent-purple">
+            <span class="stat-label">Tracked apps</span>
+            <strong id="appsCount">0</strong>
+          </article>
+          <article class="stat-card accent-blue">
+            <span class="stat-label">Active now</span>
+            <strong id="activeCount">0</strong>
+          </article>
+          <article class="stat-card accent-green">
+            <span class="stat-label">Today</span>
+            <strong id="todayCount">0m</strong>
+          </article>
+          <article class="stat-card accent-gold">
+            <span class="stat-label">Total logged</span>
+            <strong id="totalCount">0m</strong>
+          </article>
+        </section>
+
+        <section class="panel form-panel">
+          <h2>Add an app</h2>
+          <form id="appForm">
+            <div class="field-group">
+              <label for="appName">App name</label>
+              <input id="appName" name="appName" type="text" placeholder="Slack, VS Code, Notion..." required />
+            </div>
+
+            <div class="field-group">
+              <label for="appCategory">Category</label>
+              <select id="appCategory" name="appCategory">
+                <option value="Work">Work</option>
+                <option value="Communication">Communication</option>
+                <option value="Design">Design</option>
+                <option value="Learning">Learning</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <button class="primary" type="submit">Add app</button>
+          </form>
+        </section>
+
+        <section class="panel tracker-panel">
+          <div class="panel-header">
+            <h2>Tracked apps</h2>
+            <span class="muted">Track time as you work</span>
+          </div>
+          <div id="appList" class="app-list" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="appItemTemplate">
+      <article class="app-item">
+        <div class="app-meta">
+          <div class="badge"></div>
+          <div>
+            <h3 class="app-name"></h3>
+            <p class="app-category"></p>
+          </div>
+        </div>
+        <div class="app-metrics">
+          <div>
+            <span>Current</span>
+            <strong class="current-time">0m</strong>
+          </div>
+          <div>
+            <span>Total</span>
+            <strong class="total-time">0m</strong>
+          </div>
+        </div>
+        <div class="app-actions">
+          <button class="toggle-btn primary" type="button">Start</button>
+          <button class="delete-btn secondary" type="button">Delete</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
